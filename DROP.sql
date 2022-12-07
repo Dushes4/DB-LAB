@@ -1,11 +1,11 @@
-DROP INDEX name_index;
-DROP INDEX rent_user_index;
-DROP INDEX task_employee_index;
-DROP INDEX jobs_delivered_index;
-DROP INDEX jobs_solved_index;
-DROP INDEX task_scooter_t_index;
-DROP INDEX rent_scooter_index;
-DROP INDEX parkingh_scooter_index;
+DROP INDEX s309613.name_index;
+DROP INDEX s309613.rent_user_index;
+DROP INDEX s309613.task_employee_index;
+DROP INDEX s309613.jobs_delivered_index;
+DROP INDEX s309613.jobs_solved_index;
+DROP INDEX s309613.task_scooter_t_index;
+DROP INDEX s309613.rent_scooter_index;
+DROP INDEX s309613.parkingh_scooter_index;
 
 DROP TABLE s309613.Task_scooter;
 DROP TABLE s309613.Task;
