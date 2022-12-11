@@ -139,3 +139,32 @@ begin
     end if;
 end;
 $$ language plpgsql;
+
+
+CREATE OR REPLACE PROCEDURE complete_task(id_task INTEGER) as
+$$
+begin
+	if (SELECT COUNT(*) FROM Task WHERE task_id = id_task) = 0 then
+		RAISE NOTICE 'Task with this id does not exist';
+	elsif (SELECT COUNT(*) FROM Task WHERE task_id = id_task and is_done=False) = 0 then
+		RAISE NOTICE 'This task is already completed';
+	else
+		UPDATE Task SET is_done=True where id_task=task_id;
+		RAISE NOTICE 'Task has been marked as completed';
+	end if;
+end;
+$$ language plpgsql;
+
+CREATE OR REPLACE PROCEDURE complete_request(id_request INTEGER) as
+$$
+begin
+	if (SELECT COUNT(*) FROM Support_request WHERE request_id = id_request) = 0 then
+		RAISE NOTICE 'Request with this id does not exist';
+	elsif (SELECT COUNT(*) FROM Support_request WHERE request_id = id_request and is_resolved=False) = 0 then
+		RAISE NOTICE 'Request is already solved';
+	else
+		UPDATE Support_request SET is_resolved=True where request_id = id_request;
+		RAISE NOTICE 'Request has been marked as solved';
+	end if;
+end;
+$$ language plpgsql;
